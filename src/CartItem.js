@@ -37,9 +37,7 @@ class CartItem extends React.Component{
                     qty: prevState.qty - 1
                 }
             }else{
-                return {
-                    qty: 0
-                }
+                return;
             }
             
         })
