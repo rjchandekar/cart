@@ -1,50 +1,50 @@
 import React from 'react';
 
 class CartItem extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            price: 999,
-            title: 'Phone',
-            qty: 1,
-            img: ''
-        }
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-    }
-    increaseQuantity = ()=>{
-        //Naive approach
-        // this.state.qty = this.state.qty+1;
+    // constructor(){
+    //     super();
+    //     this.state = {
+    //         price: 999,
+    //         title: 'Phone',
+    //         qty: 1,
+    //         img: ''
+    //     }
+    //      this.increaseQuantity = this.increaseQuantity.bind(this);
+    // }
+    // increaseQuantity = ()=>{
+    //     Naive approach
+    //     this.state.qty = this.state.qty+1;
 
-        //setState form 1
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // });
+    //     setState form 1
+    //     this.setState({
+    //         qty: this.state.qty + 1
+    //     });
 
-        //setState form 2
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        })
-    }
-    decreaseQuantity = ()=>{
-        // this.setState({
-        //     qty: this.state.qty - 1
-        // });
-        this.setState((prevState) => {
-            if(prevState.qty-1>=0){
-                return {
-                    qty: prevState.qty - 1
-                }
-            }else{
-                return;
-            }
+    //     //setState form 2
+    //     this.setState((prevState) => {
+    //         return {
+    //             qty: prevState.qty + 1
+    //         }
+    //     })
+    // }
+    // decreaseQuantity = ()=>{
+    //     this.setState({
+    //         qty: this.state.qty - 1
+    //     });
+    //     this.setState((prevState) => {
+    //         if(prevState.qty-1>=0){
+    //             return {
+    //                 qty: prevState.qty - 1
+    //             }
+    //         }else{
+    //             return;
+    //         }
             
-        })
-    }
+    //     })
+    // }
     
     render(){
-        const {price, title, qty} = this.state;
+        const {price, title, qty} = this.props.product;
         return (
             <div className="cart-item">
                 <div className="left-block">
@@ -60,13 +60,13 @@ class CartItem extends React.Component{
                             alt="increase" 
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/png/512/992/992651.png"
-                            onClick= {this.increaseQuantity} 
+                            onClick= {()=> this.props.onIncreaseQuantity(this.props.product)} 
                         />
                         <img 
                             alt="decrease" 
                             className="action-icons" 
                             src="https://as2.ftcdn.net/jpg/02/44/39/19/500_F_244391909_DfS5TL9Oyzhf4VW0v9gPq4FPDg3BtD9w.jpg"
-                            onClick = {this.decreaseQuantity}
+                            onClick = {()=> this.props.onDecreaseQuantity(this.props.product)}
                         />
                         <img 
                             alt="delete" 
