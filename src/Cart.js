@@ -52,6 +52,14 @@ class Cart extends React.Component{
             products: products
         })
     }
+    handleDeleteProduct = (product)=>{
+        const {products} = this.state;
+        const index = products.indexOf(product);
+        delete products[index];
+        this.setState({
+            products: products
+        })
+    }
     render(){
         const {products} = this.state;
         return (
@@ -63,6 +71,7 @@ class Cart extends React.Component{
                         key = {product.id}
                         onIncreaseQuantity={this.handleIncreaseQuantity}
                         onDecreaseQuantity={this.handleDecreaseQuantity}
+                        onDeleteProduct = {this.handleDeleteProduct}
                     />
                 )
                 })}
